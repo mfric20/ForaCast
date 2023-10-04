@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import WeatherIcon from "../../public/weather-icon.png";
 import { ArrowRight } from "lucide-react";
-import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { buttonVariants } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div className="p-10 flex flex-col space-y-10">
       <div className="flex justify-center">
@@ -20,9 +24,12 @@ export default function Home() {
             thing? everything is free!
           </p>
           <div className="flex justify-center">
-            <RegisterLink className={buttonVariants()}>
+            <button
+              className={buttonVariants()}
+              onClick={() => router.push("/auth/register")}
+            >
               Get started <ArrowRight className="ml-1 h-5" />
-            </RegisterLink>
+            </button>
           </div>
         </div>
       </div>
